@@ -1,0 +1,160 @@
+---
+import "../styles/global.css";
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Register — CABS Ayurveda</title>
+    <link rel="icon" href="/favicon.svg" />
+    <script type="module" src="/firebase.js"></script>
+  </head>
+  <body class="bg-emerald-50 antialiased">
+
+    <!-- Navbar -->
+</BaseLayout>
+
+    <!-- Registration Form Section -->
+    <section class="py-12">
+      <div class="container mx-auto max-w-lg px-4">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h1 class="text-xl font-semibold text-emerald-800 mb-6 text-center">
+            Register as a Patient
+          </h1>
+
+          <form id="register-form" class="space-y-4">
+            <!-- Name -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                placeholder="John Doe"
+                class="mt-1 block w-full text-sm px-3 py-2 border border-emerald-200 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-300"
+              />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                placeholder="you@example.com"
+                class="mt-1 block w-full text-sm px-3 py-2 border border-emerald-200 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-300"
+              />
+            </div>
+
+            <!-- Phone & DOB Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  placeholder="123-456-7890"
+                  class="mt-1 block w-full text-sm px-3 py-2 border border-emerald-200 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-300"
+                />
+              </div>
+              <div>
+                <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                <input
+                  id="dob"
+                  name="dob"
+                  type="date"
+                  required
+                  class="mt-1 block w-full text-sm px-3 py-2 border border-emerald-200 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-300"
+                />
+              </div>
+            </div>
+
+            <!-- Gender -->
+            <div>
+              <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+              <select
+                id="gender"
+                name="gender"
+                required
+                class="mt-1 block w-full text-sm px-3 py-2 border border-emerald-200 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-300"
+              >
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <!-- Medical Notes -->
+            <div>
+              <label for="medicalNotes" class="block text-sm font-medium text-gray-700">
+                Medical Notes <span class="text-gray-400">(optional)</span>
+              </label>
+              <textarea
+                id="medicalNotes"
+                name="medicalNotes"
+                rows="3"
+                placeholder="Allergies, existing conditions…"
+                class="mt-1 block w-full text-sm px-3 py-2 border border-emerald-200 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-300"
+              ></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="w-full bg-emerald-600 text-white py-2 rounded-md hover:bg-emerald-700 transition"
+            >
+              Register
+            </button>
+          </form>
+
+          <!-- Success Message -->
+          <p id="success" class="mt-4 text-center text-green-700 hidden">
+            Registered successfully!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+
+
+    <!-- Inline Firebase Script -->
+    <script is:inline type="module">
+      import { registerPatient } from '/firebase.js';
+
+      const form    = document.getElementById('register-form');
+      const success = document.getElementById('success');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const data = {
+          name:          form.name.value.trim(),
+          email:         form.email.value.trim(),
+          phone:         form.phone.value.trim(),
+          dob:           form.dob.value,
+          gender:        form.gender.value,
+          medicalNotes:  form.medicalNotes.value.trim() || 'None',
+          role:          'patient'
+        };
+
+        try {
+          await registerPatient(data);
+          success.classList.remove('hidden');
+          form.reset();
+        } catch (err) {
+          alert('Error registering: ' + err.message);
+          console.error(err);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+---
+import "../styles/global.css";               // Tailwind entry
+import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <!-- Allow each page to inject its own <title>, meta, etc. -->
+    <slot name="head" />
+  </head>
+  <body class="bg-emerald-50 antialiased">
+    <!-- This is your shared Navbar -->
+    <Navbar />
+
+    <!-- This is where each page’s content goes -->
+    <main class="pt-6">
+      <slot />
+    </main>
+
+    <!-- Shared Footer -->
+    <Footer />
+  </body>
+</html>

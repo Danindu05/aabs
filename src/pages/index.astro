@@ -1,0 +1,125 @@
+---
+import "../styles/global.css";
+import Navbar from '../components/Navbar.jsx';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ACABSART — Ayurveda Booking</title>
+  </head>
+  <body class="bg-white text-gray-900 font-sans scroll-smooth">
+
+    <Navbar />
+
+    <!-- Hero Section -->
+    <section class="relative h-screen overflow-hidden">
+      <div class="absolute inset-0 bg-[url('/img/hero.webp')] bg-cover bg-center transform scale-110 opacity-40 will-change-transform animate-parallax"></div>
+      <div class="relative z-10 flex flex-col justify-center items-center h-full text-center px-4">
+        <h1 class="text-5xl md:text-6xl font-bold text-emerald-800 animate-fadein">Welcome to Ayurvedic Healing</h1>
+        <p class="mt-4 text-lg text-emerald-600 animate-fadein delay-200">Restore balance, naturally. Book trusted therapies & consultations.</p>
+        <div class="mt-8 flex gap-4 animate-fadein delay-400">
+          <a href="/appointment" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full transition-all duration-300">Book Now</a>
+          <a href="/doctors" class="bg-white text-emerald-700 border border-emerald-600 px-6 py-3 rounded-full hover:bg-emerald-100 transition-all duration-300">View Doctors</a>
+        </div>
+      </div>
+    </section>
+
+     <!-- Services -->
+    <section class="py-20 bg-emerald-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-center text-emerald-900 mb-10">Our Core Services</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl shadow hover:shadow-xl transition duration-300 p-6 group">
+            <img src="/img/pediatrician.svg" alt="Kayachikitsa" class="w-16 h-16 mb-4 transition group-hover:scale-110" />
+            <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-600 transition">Kayachikitsa</h3>
+            <p class="text-gray-600 text-sm">General medicine for detox, digestion, chronic disease, and immunity.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow hover:shadow-xl transition duration-300 p-6 group">
+            <img src="/img/pediatrician.svg" alt="Stri Roga" class="w-16 h-16 mb-4 transition group-hover:scale-110" />
+            <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-600 transition">Stri Roga</h3>
+            <p class="text-gray-600 text-sm">Focused care for menstrual health, pregnancy and hormonal balance.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow hover:shadow-xl transition duration-300 p-6 group">
+            <img src="/img/neurologist.svg" alt="Kaumarabhritya" class="w-16 h-16 mb-4 transition group-hover:scale-110" />
+            <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-600 transition">Kaumarabhritya</h3>
+            <p class="text-gray-600 text-sm">Pediatric support to boost immunity and overall child development.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Counters Section -->
+    <section class="py-20 bg-emerald-50 text-center">
+      <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div>
+          <p class="text-5xl font-bold text-emerald-700 counter" data-count="25">0</p>
+          <p class="mt-2 text-sm text-gray-600">Certified Doctors</p>
+        </div>
+        <div>
+          <p class="text-5xl font-bold text-emerald-700 counter" data-count="1000">0</p>
+          <p class="mt-2 text-sm text-gray-600">Appointments Booked</p>
+        </div>
+        <div>
+          <p class="text-5xl font-bold text-emerald-700 counter" data-count="12">0</p>
+          <p class="mt-2 text-sm text-gray-600">Specialties Covered</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white text-center relative overflow-hidden">
+      <div class="relative z-10 max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl font-semibold text-emerald-900 mb-10">What Our Patients Say</h2>
+        <div class="grid md:grid-cols-3 gap-6 text-left">
+          <div class="bg-emerald-50 rounded-xl p-6 shadow hover:shadow-lg transition">
+            <p class="text-gray-700 italic">“I found complete relief from chronic digestion issues. Ayurveda works wonders!”</p>
+            <p class="mt-4 font-bold text-emerald-800">– Anjali R.</p>
+          </div>
+          <div class="bg-emerald-50 rounded-xl p-6 shadow hover:shadow-lg transition">
+            <p class="text-gray-700 italic">“Very experienced doctors and relaxing therapies. I recommend this clinic to everyone.”</p>
+            <p class="mt-4 font-bold text-emerald-800">– Ramesh K.</p>
+          </div>
+          <div class="bg-emerald-50 rounded-xl p-6 shadow hover:shadow-lg transition">
+            <p class="text-gray-700 italic">“My child’s immunity improved drastically after their treatment. Grateful!”</p>
+            <p class="mt-4 font-bold text-emerald-800">– Sandhya D.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dosha Quiz CTA -->
+    <section class="py-20 bg-emerald-100 text-center">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-emerald-900 mb-6">Know Your Dosha</h2>
+        <p class="text-gray-700 text-lg mb-8">Discover your Ayurvedic body type and get lifestyle guidance with our quick quiz.</p>
+        <a href="/dosha-quiz" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-300">Start Quiz</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-6 text-center text-sm text-gray-500">
+      © 2025 ACABSART — Ayurveda Appointment Booking System
+    </footer>
+
+<script type="module">
+  const counters = document.querySelectorAll('.counter');
+  for (const counter of counters) {
+    const countTo = parseInt(counter.getAttribute('data-count'), 10);
+    let current = 0;
+    const step = Math.ceil(countTo / 100);
+
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= countTo) {
+        current = countTo;
+        clearInterval(interval);
+      }
+      counter.textContent = current;
+    }, 20);
+  }
+</script>
+
+  </body>
+</html>

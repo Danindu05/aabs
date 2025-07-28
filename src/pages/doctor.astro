@@ -1,0 +1,59 @@
+---
+import "../styles/doctor.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Our Doctors</title>
+    <link rel="stylesheet" href="/styles/doctor.css" />
+    <!-- one-time load of your Firebase helper -->
+    <script type="module" src="/firebase.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Our Doctors</h1>
+      <div id="doctors-container" class="card-list">Loading…</div>
+    </main>
+
+    <script type="module">
+      // Import your initialized db
+      import { db } from "/firebase.js";
+      // Firestore functions from the CDN
+      import {
+        collection,
+        getDocs
+      } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+      const container = document.getElementById("doctors-container");
+      container.textContent = ""; // clear "Loading…"
+
+      async function loadDoctors() {
+        try {
+          const snapshot = await getDocs(collection(db, "doctors"));
+          if (snapshot.empty) {
+            container.textContent = "No doctors found.";
+            return;
+          }
+          snapshot.docs.forEach((doc) => {
+            const { name, specialty, email, phone } = doc.data();
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+              <h3>${name}</h3>
+              <p><strong>Specialty:</strong> ${specialty}</p>
+              <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+              <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
+            `;
+            container.appendChild(card);
+          });
+        } catch (err) {
+          console.error("Error fetching doctors:", err);
+          container.textContent = "Failed to load doctors.";
+        }
+      }
+
+      loadDoctors();
+    </script>
+  </body>
+</html>

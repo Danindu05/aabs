@@ -1,0 +1,129 @@
+
+
+/* src/styles/footer.css */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+  --color-primary: #5568FE;
+  --color-text: #333333;
+  --color-bg-light: #F9FAFB;
+  --color-border: #E5E7EB;
+  --spacing: 1rem;
+  --transition: 0.3s ease;
+}
+
+.footer {
+  background-color: var(--color-bg-light);
+  padding: 3rem 2rem;
+  color: var(--color-text);
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer-logo:hover {
+  color: #4458EE;
+}
+
+.footer-column h3 {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.footer-about p {
+  line-height: 1.5;
+}
+
+.footer-links ul,
+.footer-contact ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li,
+.footer-contact li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-contact i {
+  width: 1rem;
+  color: var(--color-primary);
+  transition: transform var(--transition);
+}
+
+.footer-contact li:hover i {
+  transform: translateX(3px);
+}
+
+.footer-social .social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  color: var(--color-text);
+  font-size: 1.25rem;
+  transition: color var(--transition), transform var(--transition);
+}
+
+.footer-social a:hover {
+  color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+
+
